@@ -11,6 +11,7 @@ function EmployeeForm({onSave}) {
         event.preventDefault();
 
         const employee = {
+            id: Date.now(),
             firstName,
             lastName,
             email,
