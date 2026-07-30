@@ -1,13 +1,16 @@
+import EmployeeCard from "./EmployeeCard"
+
 function EmployeeList({ employees }) {
     return (
         <div>
             <h2>Employees</h2>
 
-            {employees.map((employee, id)=> (
+            {employees.map(employee=> (
 
-                <div key={employee.id}>
-                    {employee.firstName} {employee.lastName}
-                </div>
+                <EmployeeCard
+                    key={employee.id}
+                    employee={employee}
+                    />
 
             ))}
         </div>
