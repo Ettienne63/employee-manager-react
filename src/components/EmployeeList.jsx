@@ -1,6 +1,6 @@
 import EmployeeCard from "./EmployeeCard"
 
-function EmployeeList({ employees , onDelete}) {
+function EmployeeList({ employees , onDelete, onEdit}) {
     return (
         <div>
             <h2>Employees</h2>
@@ -11,6 +11,7 @@ function EmployeeList({ employees , onDelete}) {
                     key={employee.id}
                     employee={employee}
                     onDelete={onDelete}
+                    onEdit ={onEdit}
                  />
 
             ))}

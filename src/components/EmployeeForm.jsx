@@ -1,17 +1,31 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
-function EmployeeForm({onSave}) {
+function EmployeeForm({ onSave, editEmployee }) {
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
     const [department, setDepartment] = useState("")
     const [salary, setSalary] = useState("")
 
-    function handleSubmit(event){
+    useEffect(() => {
+
+        if (editEmployee) {
+
+            setFirstName(editEmployee.firstName)
+            setLastName(editEmployee.lastName)
+            setEmail(editEmployee.email)
+            setDepartment(editEmployee.department)
+            setSalary(editEmployee.salary)
+
+        }
+
+    }, [editEmployee])
+
+    function handleSubmit(event) {
         event.preventDefault();
 
         const employee = {
-            id: Date.now(),
+            id: editEmployee ? editEmployee.id : Date.now(),
             firstName,
             lastName,
             email,
@@ -20,6 +34,12 @@ function EmployeeForm({onSave}) {
         }
 
         onSave(employee)
+        setFirstName("")
+        setLastName("")
+        setEmail("")
+        setDepartment("")
+        setSalary("")
+
     }
 
     return (
@@ -86,7 +106,7 @@ function EmployeeForm({onSave}) {
             </div>
 
             <div>
-                <button type="submit"> 
+                <button type="submit">
                     Save Employee
                 </button>
             </div>
