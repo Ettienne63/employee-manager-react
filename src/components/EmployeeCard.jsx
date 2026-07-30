@@ -1,4 +1,4 @@
-function EmployeeCard({employee}){
+function EmployeeCard({employee,onDelete}){
     return(
         <div>
             <h3>
@@ -10,7 +10,7 @@ function EmployeeCard({employee}){
             <p>Salary: R{employee.salary}</p>
 
             <button>Edit</button>
-            <button>Delete</button>
+            <button onClick={()=> onDelete(employee.id)}>Delete</button>
             
         </div>
     )

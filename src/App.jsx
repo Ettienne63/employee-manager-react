@@ -12,11 +12,21 @@ function addEmployee(employee){
     employee
   ])
 }
+
+function deleteEmployee(id){
+  setEmployees(previousEmployees =>
+    previousEmployees.filter(employee => employee.id !== id)
+  )
+}
   return (
     <div>
         <h1>Employee Manager</h1>
         <EmployeeForm onSave={addEmployee}/>
-        <EmployeeList employees = {employees}/>
+        <EmployeeList 
+          employees = {employees}
+          onDelete = {deleteEmployee}
+        
+        />
     </div>
   )
 }
