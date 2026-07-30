@@ -43,10 +43,14 @@ function addEmployee(employee) {
   }
 }
 
-function deleteEmployee(id){
+function deleteEmployee(id) {
   setEmployees(previousEmployees =>
     previousEmployees.filter(employee => employee.id !== id)
   )
+
+  if (editEmployee && editEmployee.id === id) {
+    setEditEmployee(null)
+  }
 }
   return (
     <div>
